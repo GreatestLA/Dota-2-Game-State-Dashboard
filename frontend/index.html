@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dota 2 Game State Dashboard - Enhanced</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚔️ DOTA 2 DASHBOARD</h1>
+            <div class="status-indicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Waiting for game...</span>
+            </div>
+            <!-- NEW: Game Time Display -->
+            <div class="game-time-display">
+                <div class="game-clock">
+                    <span class="clock-icon">🕐</span>
+                    <span class="clock-time" id="gameTime">00:00</span>
+                    <span class="day-night-indicator" id="dayNight">☀️</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Hero Status Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>🛡️ Hero Status</h2>
+                </div>
+                <div class="card-body">
+                    <div class="hero-name" id="heroName">No Hero Selected</div>
+                    
+                    <!-- NEW: K/D/A Display -->
+                    <div class="kda-section">
+                        <div class="kda-stat">
+                            <span class="kda-label">K</span>
+                            <span class="kda-value" id="kills">0</span>
+                        </div>
+                        <div class="kda-divider">/</div>
+                        <div class="kda-stat">
+                            <span class="kda-label">D</span>
+                            <span class="kda-value death" id="deaths">0</span>
+                        </div>
+                        <div class="kda-divider">/</div>
+                        <div class="kda-stat">
+                            <span class="kda-label">A</span>
+                            <span class="kda-value" id="assists">0</span>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Respawn Timer (only shows when dead) -->
+                    <div class="respawn-timer hidden" id="respawnTimer">
+                        <div class="respawn-icon">💀</div>
+                        <div class="respawn-text">Respawning in</div>
+                        <div class="respawn-countdown" id="respawnCountdown">0s</div>
+                    </div>
+                    
+                    <div class="stat-row">
+                        <span class="stat-label">Health:</span>
+                        <span class="stat-value" id="healthValue">- / -</span>
+                    </div>
+                    <div class="health-bar-container">
+                        <div class="health-bar" id="healthBar"></div>
+                        <span class="health-percent" id="healthPercent">0%</span>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">Mana:</span>
+                        <span class="stat-value" id="manaValue">- / -</span>
+                    </div>
+                    <div class="mana-bar-container">
+                        <div class="mana-bar" id="manaBar"></div>
+                        <span class="mana-percent" id="manaPercent">0%</span>
+                    </div>
+
+                    <div class="stat-row">
+                        <span class="stat-label">Level:</span>
+                        <span class="stat-value highlight" id="heroLevel">-</span>
+                    </div>
+
+                    <!-- NEW: XP Progress to Next Level -->
+                    <div class="xp-section">
+                        <div class="stat-row">
+                            <span class="stat-label">XP to Level <span id="nextLevel">-</span>:</span>
+                            <span class="stat-value" id="xpRemaining">-</span>
+                        </div>
+                        <div class="xp-bar-container">
+                            <div class="xp-bar" id="xpBar"></div>
+                            <span class="xp-percent" id="xpPercent">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economy Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>💰 Economy</h2>
+                </div>
+                <div class="card-body">
+                    <!-- NEW: GPM/XPM Section -->
+                    <div class="performance-section">
+                        <div class="performance-stat">
+                            <div class="perf-label">GPM</div>
+                            <div class="perf-value gold" id="gpm">0</div>
+                        </div>
+                        <div class="performance-stat">
+                            <div class="perf-label">XPM</div>
+                            <div class="perf-value" id="xpm">0</div>
+                        </div>
+                        <div class="performance-stat">
+                            <div class="perf-label">Net Worth</div>
+                            <div class="perf-value gold" id="netWorth">0</div>
+                        </div>
+                    </div>
+
+                    <div class="gold-section">
+                        <div class="stat-row">
+                            <span class="stat-label">Total Gold:</span>
+                            <span class="stat-value gold" id="totalGold">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Reliable Gold:</span>
+                            <span class="stat-value" id="reliableGold">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Unreliable Gold:</span>
+                            <span class="stat-value" id="unreliableGold">0</span>
+                        </div>
+                    </div>
+
+                    <div class="buyback-section">
+                        <h3>Buyback Calculator</h3>
+                        <div class="buyback-info">
+                            <div class="stat-row">
+                                <span class="stat-label">Buyback Cost:</span>
+                                <span class="stat-value gold" id="buybackCost">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Gold After Buyback:</span>
+                                <span class="stat-value" id="goldAfterBuyback">-</span>
+                            </div>
+                            <div class="buyback-status" id="buybackStatus">
+                                <span class="status-badge">Unknown</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Last Update: <span id="lastUpdate">Never</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
