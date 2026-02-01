@@ -1,22 +1,10 @@
-## 🎮 Project Overview
-
-This project demonstrates:
-- **Backend:** Python Flask server receiving game data via Dota 2 GSI
-- **Frontend:** Modern web dashboard with live health/mana/gold tracking
-- **Systems Programming:** C++ health monitoring with critical health alerts
-
-
-## 🚀 Quick Start Guide
+## 🚀 Start Guide
 
 ### Prerequisites
 
 **Python:**
 - Python 3.8 or higher
 - pip package manager
-
-**C++ Compiler:**
-- **Windows:** Visual Studio or MinGW-w64
-
 
 **Dota 2:**
 - Installed via Steam
