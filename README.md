@@ -58,10 +58,8 @@ Waiting for Dota 2 game data...
 
 **Direct File Opening**
 
-Double-click `frontend/index.html` or:
-```bash
-```
----
+Double-click `frontend/index.html`
+
 
 ### Step 5: Start Playing Dota 2
 
