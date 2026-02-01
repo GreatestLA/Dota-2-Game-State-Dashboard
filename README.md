@@ -93,6 +93,7 @@ Double-click `frontend/index.html` or:
 - ✅ Dark mode gamer aesthetic
 - ✅ Responsive design
 
+
 ### Backend API
 - ✅ Receives Dota 2 GSI data
 - ✅ RESTful API endpoints
@@ -100,6 +101,6 @@ Double-click `frontend/index.html` or:
 - ✅ Real-time data updates
 
 ---
-
+<img width="1343" height="618" alt="project" src="https://github.com/user-attachments/assets/a9903b82-229a-44bf-8d29-8f958e8b712e" />
 
 **Happy gaming! ⚔️🎮**
